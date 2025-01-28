@@ -1,0 +1,20 @@
+# Reverse Engineering Challenge
+def obfuscate_key(key):
+    """Obfuscates the input key to compare with the secret."""
+    return ''.join(chr(ord(c) ^ 42) for c in key[::-1])
+
+def reverse_engineering_challenge():
+    print("Welcome to the Reverse Engineering Challenge!")
+    print("Your task is to figure out the secret key that reveals the flag.")
+
+    secret = obfuscate_key("get_your_ctf_flag")  # Secret obfuscated key
+    user_input = input("Enter the secret key: ").strip()
+
+    # Check if the user's input matches the obfuscated key
+    if obfuscate_key(user_input) == secret:
+        print(f"Congratulations! Here is your flag: {FLAG}")
+    else:
+        print("Incorrect key. Try again!")
+
+if __name__ == "__main__":
+    reverse_engineering_challenge()
