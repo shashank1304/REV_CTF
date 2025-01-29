@@ -1,0 +1,35 @@
+# Palindrome Puzzle
+FLAG = "CTF{Palindrome_Pro}"
+
+def is_palindrome(s):
+    # Remove non-alphanumeric characters and convert to lowercase
+    cleaned = ''.join(c.lower() for c in s if c.isalnum())
+    return cleaned == cleaned[::-1]
+
+def palindrome_puzzle():
+    print("Welcome to the Palindrome Puzzle!")
+    print("To unlock the flag, solve the following tasks:")
+    
+    print("\nTask 1: Determine if the following string is a palindrome:")
+    task_1_string = "A man, a plan, a canal, Panama!"
+    print(f"String: {task_1_string}")
+    
+    user_input_1 = input("Is this a palindrome? (yes/no): ").strip().lower()
+    if user_input_1 == "yes" and is_palindrome(task_1_string):
+        print("Correct! Moving to the next task.")
+    else:
+        print("Incorrect. Try again!")
+        return
+    
+    print("\nTask 2: Find the smallest palindrome greater than 12321.")
+    print("Hint: The next palindrome must also be a 5-digit number.")
+    
+    user_input_2 = input("Enter the smallest palindrome greater than 12321: ").strip()
+    correct_answer_2 = "12421"
+    if user_input_2 == correct_answer_2:
+        print(f"Congratulations! Here is your flag: {FLAG}")
+    else:
+        print("Incorrect. Try again!")
+
+if __name__ == "__main__":
+    palindrome_puzzle()
